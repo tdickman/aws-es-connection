@@ -8,7 +8,7 @@ import os
 
 class AWSConnection(Connection):
 
-    def __init__(self, host, region, **kwargs):
+    def __init__(self, host, region, port=9200, **kwargs):
         super(AWSConnection, self).__init__(host, port, region, **kwargs)
         self.host = host
         self.region = region
