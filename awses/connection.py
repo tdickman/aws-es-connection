@@ -9,7 +9,7 @@ import os
 class AWSConnection(Connection):
 
     def __init__(self, host, region, **kwargs):
-        super(AWSConnection, self).__init__(host, region, **kwargs)
+        super(AWSConnection, self).__init__(host, port, region, **kwargs)
         self.host = host
         self.region = region
         self.token = kwargs['session_token'] if 'session_token' in kwargs else os.environ.get('AWS_SESSION_TOKEN')
