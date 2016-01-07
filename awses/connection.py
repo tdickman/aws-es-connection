@@ -1,6 +1,6 @@
 from elasticsearch import Connection
-from signer import ESConnection
-from urlparse import urlparse
+from awses.signer import ESConnection
+import urllib.parse
 import time
 
 import os
@@ -20,8 +20,8 @@ class AWSConnection(Connection):
     def perform_request(self, method, url, params=None,
                         body=None, timeout=None, ignore=()):
         start = time.time()
-        host = urlparse(self.host).netloc.split(':')[0]
-        client = ESConnection(region=self.region, 
+        host = urllib.parse.urlparse(self.host).netloc.split(':')[0]
+        client = ESConnection(region=self.region,
                               host=self.host,
                               aws_access_key_id=self.key,
                               aws_secret_access_key=self.secret,
